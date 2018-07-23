@@ -19,7 +19,15 @@ pipeline {
                 }
             }
         }
-
+       
+       stage ('Package Stage') {
+       
+           steps {
+               withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn package'
+                 }
+             }
+        }
 
         stage ('Deployment Stage') {
             steps {
